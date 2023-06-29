@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.2'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.2'
+
+    // https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.8.2'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.11.2'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
+    testImplementation group: 'io.cucumber', name: 'cucumber-java', version: '7.11.2'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java8
+    implementation group: 'io.cucumber', name: 'cucumber-java8', version: '7.11.2'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.8.3'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-api
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-api', version: '4.8.3'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '4.8.3'
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.20.0'
+
+    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.3.0'
+
+    // https://mvnrepository.com/artifact/net.serenity-bdd/serenity-core
+    implementation group: 'net.serenity-bdd', name: 'serenity-core', version: '3.6.12'
+
+    // https://mvnrepository.com/artifact/net.serenity-bdd/serenity-junit
+    implementation group: 'net.serenity-bdd', name: 'serenity-junit', version: '3.6.12'
+
+    // https://mvnrepository.com/artifact/net.serenity-bdd/serenity-reports
+    implementation group: 'net.serenity-bdd', name: 'serenity-reports', version: '3.6.12'
+
+    // https://mvnrepository.com/artifact/net.serenity-bdd/serenity-cucumber
+    testImplementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '3.6.12'
+
+    // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.7'
+
+    // https://mvnrepository.com/artifact/com.opencsv/opencsv
+    implementation group: 'com.opencsv', name: 'opencsv', version: '5.7.1'
+}
+
+test {
+    useJUnitPlatform()
+}
