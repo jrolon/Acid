@@ -6,28 +6,28 @@ import org.openqa.selenium.support.CacheLookup;
 
 public class LoginPage extends PageObject {
 
-    @FindBy(xpath = "//*[@id=''html-body']/div[2]/header/div[1]/div/div/div/div/ul[2]/li")
+    @FindBy(id = "testId-loggedout-item-0")
     @CacheLookup
     public WebElementFacade btnAdvanceSettings;
 
-    @FindBy(xpath = "//a[@id='proceed-link']")
+    @FindBy(id = "testId-UserAction-userinfo")
     @CacheLookup
     public WebElementFacade btnContinueToWebPage;
 
-    @FindBy(id = "email")
+    @FindBy(id = "testId-cc-login-form-email-input")
     @CacheLookup
     public WebElementFacade txtUserField;
 
-    @FindBy(xpath = "(//*[@id='pass'])[1]")
+    @FindBy(id = "testId-cc-login-form-password-input")
     @CacheLookup
     public WebElementFacade txtPasswordField;
 
-    @FindBy(id = "identifierNext")
+    @FindBy(id = "testId-SearchBar-Input")
     @CacheLookup
-    public WebElementFacade btnSubmit;
+    public WebElementFacade btnSearch;
 
 
-    @FindBy(xpath = "(//*[@id='send2'])[1]")
+    @FindBy(id = "testId-cc-login-form-submit")
     @CacheLookup
     public WebElementFacade btnSubmitPassword;
 
@@ -35,7 +35,7 @@ public class LoginPage extends PageObject {
     @CacheLookup
     public WebElementFacade lblTextToVerify;
 
-    @FindBy(xpath = "//span[text()='Boletines informativos']")
+    @FindBy(id = "testId-UserAction-userinfo")
     @CacheLookup
     public WebElementFacade lblNickname;
 
@@ -45,3 +45,5 @@ public class LoginPage extends PageObject {
 
 
 }
+
+

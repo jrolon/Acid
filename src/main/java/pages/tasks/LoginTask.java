@@ -21,7 +21,7 @@ public class LoginTask extends LoginPage {
     @Step
     public void launchBrowser() {
         try {
-            openUrl("https://www.kliper.cl/customer/account/login");
+            openUrl("https://www.falabella.com.co/falabella-co");
         } catch (Exception e) {
             registerInfo(LoginTask.class, ERROR, "It is not possible to launch the application");
         }
@@ -35,16 +35,19 @@ public class LoginTask extends LoginPage {
      */
     @Step
     public void signIn(User user) {
-        //btnAdvanceSettings.click();
-        //btnContinueToWebPage.click();
+
+        btnContinueToWebPage.click();
+        btnAdvanceSettings.click();
+       // moveTo(btnContinueToWebPage())
         waitFor(txtUserField);
         txtUserField.click();
-        txtUserField.sendKeys("aleatorio1001@gmail.com");
+        txtUserField.sendKeys("jrolon@acid.cl");
         waitFor(2000);
         //btnSubmit.click();
 
-        txtPasswordField.sendKeys("Registro123.2");
+        txtPasswordField.sendKeys("Falabella01*");
         btnSubmitPassword.click();
+        waitFor(6000);
     }
 
     @Step
@@ -62,7 +65,10 @@ public class LoginTask extends LoginPage {
     public void validateWelcomePage() {
        // waitFor(lblNickname);
       //  lblNickname.shouldBeVisible();
-        assertThat(lblNickname.getText(), equalTo("Boletines informativos"));
+        waitFor(600000);
+        btnContinueToWebPage.click();
+        btnSearch.click();
+        assertThat(lblNickname.getText(), equalTo("Hola, Jeiner"));
     }
 
     @Step
