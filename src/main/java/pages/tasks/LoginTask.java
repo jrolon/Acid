@@ -1,7 +1,11 @@
 package pages.tasks;
 
+import kotlin.jvm.functions.Function5;
 import models.User;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import pages.locators.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,6 +26,7 @@ public class LoginTask extends LoginPage {
     public void launchBrowser() {
         try {
             openUrl("https://www.falabella.com.co/falabella-co");
+
         } catch (Exception e) {
             registerInfo(LoginTask.class, ERROR, "It is not possible to launch the application");
         }
@@ -36,6 +41,7 @@ public class LoginTask extends LoginPage {
     @Step
     public void signIn(User user) {
 
+        //btnPopUp.click();
         btnContinueToWebPage.click();
         btnAdvanceSettings.click();
        // moveTo(btnContinueToWebPage())
@@ -49,6 +55,120 @@ public class LoginTask extends LoginPage {
         btnSubmitPassword.click();
         waitFor(6000);
     }
+
+    @Step
+    public void signInIncorrect(User user) {
+        btnContinueToWebPage.click();
+        btnAdvanceSettings.click();
+        // moveTo(btnContinueToWebPage())
+        waitFor(txtUserField);
+        txtUserField.click();
+        txtUserField.sendKeys("jrolon@aci");
+        waitFor(2000);
+        //btnSubmit.click();
+
+        txtPasswordField.sendKeys("Falabella01*");
+       // btnSubmitPassword.click();
+        waitFor(6000);
+    }
+
+    @Step
+    public void signInIncorrectSpecialCharacters(User user) {
+        btnContinueToWebPage.click();
+        btnAdvanceSettings.click();
+        // moveTo(btnContinueToWebPage())
+        waitFor(txtUserField);
+        txtUserField.click();
+        txtUserField.sendKeys("dasd*/-#%/[com");
+        waitFor(2000);
+        //btnSubmit.click();
+
+        txtPasswordField.sendKeys("Falabella01*");
+        // btnSubmitPassword.click();
+        waitFor(6000);
+    }
+
+    @Step
+    public void signInIncorrectPass(User user) {
+        btnContinueToWebPage.click();
+        btnAdvanceSettings.click();
+        // moveTo(btnContinueToWebPage())
+        waitFor(txtUserField);
+        txtUserField.click();
+        txtUserField.sendKeys("jrolon@acid.cl");
+        waitFor(2000);
+        //btnSubmit.click();
+
+        txtPasswordField.sendKeys("Falabella099");
+        btnSubmitPassword.click();
+        waitFor(60000);
+    }
+
+    @Step
+    public void signInEmailEmpty(User user) {
+        btnContinueToWebPage.click();
+        btnAdvanceSettings.click();
+        // moveTo(btnContinueToWebPage())
+        waitFor(txtUserField);
+        txtUserField.click();
+        txtUserField.sendKeys("");
+        waitFor(2000);
+        //btnSubmit.click();
+
+        txtPasswordField.sendKeys("Falabella099");
+       // btnSubmitPassword.click();
+        waitFor(60000);
+    }
+
+    @Step
+    public void signInPassEmpty(User user) {
+        btnContinueToWebPage.click();
+        btnAdvanceSettings.click();
+        // moveTo(btnContinueToWebPage())
+        waitFor(txtUserField);
+        txtUserField.click();
+        txtUserField.sendKeys("jrolon@acid.cl");
+        waitFor(2000);
+        //btnSubmit.click();
+
+        txtPasswordField.sendKeys("");
+        // btnSubmitPassword.click();
+        waitFor(60000);
+    }
+
+    @Step
+    public void signInEmailAndPassEmpty(User user) {
+        btnContinueToWebPage.click();
+        btnAdvanceSettings.click();
+        // moveTo(btnContinueToWebPage())
+        waitFor(txtUserField);
+        txtUserField.click();
+        txtUserField.sendKeys("");
+        waitFor(2000);
+        //btnSubmit.click();
+
+        txtPasswordField.sendKeys("");
+        // btnSubmitPassword.click();
+        waitFor(60000);
+    }
+
+
+    public void signInIncorrectPopUp(User user) {
+        btnContinueToWebPage.click();
+        btnAdvanceSettings.click();
+        // moveTo(btnContinueToWebPage())
+        waitFor(txtUserField);
+        txtUserField.click();
+        txtUserField.sendKeys("jrolon@acid.cl");
+        waitFor(2000);
+        //btnSubmit.click();
+
+        txtPasswordField.sendKeys("Falabella099");
+        btnSubmitPassword.click();
+        waitFor(6000);
+    }
+
+
 
     @Step
     public void signInBlank(){
@@ -73,8 +193,38 @@ public class LoginTask extends LoginPage {
 
     @Step
     public void validateMessageError(){
-        assertThat(msgError.getText(), equalTo("Este es un campo obligatorio."));
+        //assertThat(msgError.isDisplayed(), equalTo(true));
+         assertThat(msgError.getText(), equalTo("Ingresa un correo electrónico válido (nombre@ejemplo.com)"));
     }
+    @Step
+    public void validateIncorrectPopUp(){
+        showPass.click();
+        waitFor(60000);
+        //assertThat(msgPopUp.isDisplayed(), equalTo(true));
+        assertThat(msgPopUp.getText(), equalTo("Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente."));
+    }
+
+    @Step
+    public void validateMessageErrorEmailEmpty(){
+        //assertThat(msgError.isDisplayed(), equalTo(true));
+        assertThat(msgError.getText(), equalTo("Ingresa un correo electrónico"));
+    }
+
+    @Step
+    public void validateMessageErrorPassEmpty(){
+        showPass.click();
+        //assertThat(msgError.isDisplayed(), equalTo(true));
+        assertThat(msgErrorPass.getText(), equalTo("Ingresa una contraseña"));
+    }
+
+    @Step
+    public void validateMessageErrorEmailAndPassEmpty(){
+        assertThat(msgError.getText(), equalTo("Ingresa un correo electrónico"));
+        showPass.click();
+        //assertThat(msgError.isDisplayed(), equalTo(true));
+        assertThat(msgErrorPass.getText(), equalTo("Ingresa una contraseña"));
+    }
+
 
     /**
      * Validates if the nickname is the indicated
@@ -84,6 +234,7 @@ public class LoginTask extends LoginPage {
      */
     @Step
     public void validateNickname(User user) {
+        showPass.click();
         waitFor(lblNickname);
         waitFor(2000);
         assertThat(lblNickname.getText(), equalTo(user.getNickname()));

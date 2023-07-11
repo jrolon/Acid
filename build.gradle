@@ -1,13 +1,27 @@
-plugins {
-    id 'java'
-}
-
 group 'org.example'
 version '1.0-SNAPSHOT'
+
+defaultTasks 'clean', 'test', 'aggregate'
 
 repositories {
     mavenCentral()
 }
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.3.10")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = "UTF-8"
 
 dependencies {
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
@@ -65,6 +79,9 @@ dependencies {
     implementation group: 'com.opencsv', name: 'opencsv', version: '5.7.1'
 }
 
+
 test {
     useJUnitPlatform()
 }
+
+test.finalizedBy(aggregate)

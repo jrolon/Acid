@@ -14,6 +14,10 @@ public class LoginPage extends PageObject {
     @CacheLookup
     public WebElementFacade btnContinueToWebPage;
 
+    @FindBy(xpath = "//*[@id='dytmpl-16660807']/picture/img")
+    @CacheLookup
+    public WebElementFacade btnPopUp;
+
     @FindBy(id = "testId-cc-login-form-email-input")
     @CacheLookup
     public WebElementFacade txtUserField;
@@ -25,7 +29,6 @@ public class LoginPage extends PageObject {
     @FindBy(id = "testId-SearchBar-Input")
     @CacheLookup
     public WebElementFacade btnSearch;
-
 
     @FindBy(id = "testId-cc-login-form-submit")
     @CacheLookup
@@ -39,10 +42,25 @@ public class LoginPage extends PageObject {
     @CacheLookup
     public WebElementFacade lblNickname;
 
-    @FindBy(id = "pass-error")
+    @FindBy(id = "testId-cc-login-form-email-help")
     @CacheLookup
     public WebElementFacade msgError;
 
+    @FindBy(id = "testId-cc-login-form-password-help")
+    @CacheLookup
+    public WebElementFacade msgErrorPass;
+
+    @FindBy(xpath = "//*[@id='testId-cc-login-form']/form/div[1]")
+    @CacheLookup
+    public WebElementFacade msgPopUp;
+
+    @FindBy(id = "testId-cc-login-form-password-icon-button")
+    @CacheLookup
+    public WebElementFacade showPass;
+
+    @FindBy(id = "testId-cc-login-form-email-help")
+    @CacheLookup
+    public WebElementFacade msgErrorEmailEmpty;
 
 }
 

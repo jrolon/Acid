@@ -31,6 +31,34 @@ public class LoginController {
         loginTask.signInBlank();
     }
 
+    public void signInIncorrect(User user){
+        loginTask.signInIncorrect(user);
+    }
+
+    public void signInIncorrectPass(User user){
+        loginTask.signInIncorrectPass(user);
+    }
+
+    public void signInEmailEmpty(User user){
+        loginTask.signInEmailEmpty(user);
+    }
+
+    public void signInPassEmpty(User user){
+        loginTask.signInPassEmpty(user);
+    }
+
+    public void signInEmailAndPassEmpty(User user){
+        loginTask.signInEmailAndPassEmpty(user);
+    }
+
+    public void signInIncorrectSpecialCharacters(User user){
+        loginTask.signInIncorrectSpecialCharacters(user);
+    }
+
+    public void signInIncorrectPopUp(){
+        loginTask.validateIncorrectPopUp();
+    }
+
     /**
      * Manage the tasks to validate if the user's Log in was successful, and he's on welcome page
      * Date: 24/04/2023
@@ -54,6 +82,21 @@ public class LoginController {
 
     public void validateMessage(){
         loginTask.validateMessageError();
+    }
 
+    public void validateMessagePopUp(){
+        loginTask.validateIncorrectPopUp();
+    }
+
+    public void validateMessageEmailEmpty(){
+        loginTask.validateMessageErrorEmailEmpty();
+    }
+
+    public void validateMessagePassEmpty(){
+        loginTask.validateMessageErrorPassEmpty();
+    }
+
+    public void validateMessageErrorEmailAndPassEmpty(){
+        loginTask.validateMessageErrorEmailAndPassEmpty();
     }
 }
